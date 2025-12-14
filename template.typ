@@ -11,6 +11,8 @@
   )
   set text(font: "Libertinus Serif", lang: "pt")
   set heading(numbering: "1.1.", supplement: "Secção")
+  show heading: set block(above: 2em, below: 1em) // espaçamento antes e depois dos cabeçalhos
+  show heading.where(level: 1): set block(spacing: 2em) // espaçamento extra para cabeçalhos de nível 1
 
   // Title row.
   align(center)[
@@ -36,7 +38,7 @@
   )
 
   // Main body.
-  set par(justify: true)
+  set par(justify: true) // para alterar espaçamento entre linhas, utilizar leading: 0.52em (default)
 
   body
 }
