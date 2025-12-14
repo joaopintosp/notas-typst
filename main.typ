@@ -3,6 +3,7 @@
 
 // Additional packages
 // #import "@preview/chemformula:0.1.1": ch // For writing chemical equations with #ch()
+// #import "@preview/note-me:0.6.0": * // For adding callouts GitHub style with #note[], #tip[], #warning[]...
 
 // Preamble
 #show: project.with(
