@@ -58,6 +58,9 @@
   // Main body.
   set par(justify: true) // para alterar espaçamento entre linhas, utilizar leading: 0.52em (default)
 
+  // Numbered equations
+  set math.equation(numbering: "(1)", number-align: right, supplement: [Eq.])
+
   body
 }
 
