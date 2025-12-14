@@ -64,6 +64,18 @@
   // Table caption position
   show figure.where(kind: table): set figure.caption(position: top)
 
+  // Custom table appearance
+  show table.cell.where(y: 0): set text(weight: "bold")
+  // show table.cell.where(x: 0): set text(weight: "bold")
+  set table(
+    stroke: none,
+    gutter: 0.2em,
+    fill: (x, y) => if calc.even(y) == false { gray.transparentize(80%) },
+    // inset: (x: 1em, y: 0.3em), // espaçamento entre texto e célula
+    row-gutter: 0em,
+    column-gutter: 0em,
+  )
+
   body
 }
 
