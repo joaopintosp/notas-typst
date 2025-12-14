@@ -61,6 +61,9 @@
   // Numbered equations
   set math.equation(numbering: "(1)", number-align: right, supplement: [Eq.])
 
+  // Table caption position
+  show figure.where(kind: table): set figure.caption(position: top)
+
   body
 }
 
