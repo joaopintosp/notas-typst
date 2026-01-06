@@ -5,6 +5,9 @@
 // Packages to include by default
 #import "@preview/hydra:0.6.2": hydra                          // Package for headers
 #import "@preview/physica:0.9.7": *                            // Package to write physics and math better
+#import "@preview/typsium:0.3.1": *                            // Package for chemical equations
+#import "@preview/unify:0.7.1": num, numrange, qty, qtyrange   // for units
+
 
 #let project(title: "", authors: (), date: none, body) = {
   // Set the document's basic properties.
