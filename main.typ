@@ -11,8 +11,8 @@
   authors: (
     (
       name: "João Sá Pereira",
-      //email: "sa.pereira@almonty.com",
-      //affiliation: "Almonty Industries",
+      email: "sa.pereira@almonty.com",
+      affiliation: "Almonty Industries",
     ),
   ),
   date: [
