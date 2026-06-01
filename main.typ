@@ -11,8 +11,8 @@
   authors: (
     (
       name: "João Sá Pereira",
-      email: "up201906772@up.pt",
-      affiliation: "DECG - Faculdade de Engenharia da Universidade do Porto",
+      //email: "sa.pereira@almonty.com",
+      //affiliation: "Almonty Industries",
     ),
   ),
   date: [
