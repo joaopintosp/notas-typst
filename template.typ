@@ -79,7 +79,21 @@
 }
 
 #let d = datetime.today()
-#let meses = (
+#let ordinal(n) = {
+  let suffix = if n == 11 or n == 12 or n == 13 {
+    "th"
+  } else if calc.rem(n, 10) == 1 {
+    "st"
+  } else if calc.rem(n, 10) == 2 {
+    "nd"
+  } else if calc.rem(n, 10) == 3 {
+    "rd"
+  } else {
+    "th"
+  }
+  [#n#super(suffix)]
+}
+#let months = (
   "January",
   "February",
   "March",
@@ -93,4 +107,3 @@
   "November",
   "December",
 )
-
