@@ -25,7 +25,7 @@
     },
   )
 
-  set text(font: "Libertinus Serif", lang: "pt")
+  set text(font: "Libertinus Serif", lang: "en")
 
   set heading(numbering: "1.1.", supplement: "Secção")
   show heading: set block(above: 2em, below: 1em) // espaçamento antes e depois dos cabeçalhos
@@ -80,16 +80,17 @@
 
 #let d = datetime.today()
 #let meses = (
-  "janeiro",
-  "fevereiro",
-  "março",
-  "abril",
-  "maio",
-  "junho",
-  "julho",
-  "agosto",
-  "setembro",
-  "outubro",
-  "novembro",
-  "dezembro",
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
 )
+
