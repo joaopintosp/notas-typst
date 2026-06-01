@@ -16,7 +16,7 @@
     ),
   ),
   date: [
-    #d.day() de #meses.at(d.month() - 1) de #d.year()
+    #months.at(d.month() - 1) #ordinal(d.day()), #d.year()
   ],
   // or manual date
   // date: "10 de dezembro de 2025",
