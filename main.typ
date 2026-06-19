@@ -5,40 +5,31 @@
 // #import "@preview/chemformula:0.1.1": ch // For writing chemical equations with #ch()
 // #import "@preview/note-me:0.6.0": * // For adding callouts GitHub style with #note[], #tip[], #warning[]...
 
-// Preamble
 #show: project.with(
-  title: "Template",
+  title: "Title",
   authors: (
-    (
-      name: "João Sá Pereira",
-      email: "",
-      affiliation: "",
-    ),
+    "author",
   ),
-  date: [
-    #months.at(d.month() - 1) #ordinal(d.day()), #d.year()
-  ],
-  // or manual date
-  // date: "10 de dezembro de 2025",
+  // abstract: lorem(59),
+  date: "date",
 )
 
-// Body
-
 = Introduction
-#lorem(60)
-
-== In this paper
-#lorem(20)
-
-=== Contributions
-#lorem(40)
-
-= Related Work
-#lorem(150)
-
-== Inspirations
 
 #lorem(300)
 
-// Uncomment next line for bibliography
-// #bibliography("references.bib", style: "american-psychological-association", full: true)
+== Description
+
+#lorem(100)
+
+=== Motivations
+
+#lorem(100)
+
+= Related Work
+
+#lorem(150)
+
+== Inspiration
+
+#lorem(50)
