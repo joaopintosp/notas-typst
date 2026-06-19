@@ -33,3 +33,6 @@
 == Inspiration
 
 #lorem(50)
+
+// Uncomment next line for bibliography
+// #bibliography("references.bib", style: "american-psychological-association", full: true)
