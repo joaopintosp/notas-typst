@@ -1,5 +1,5 @@
-// Packages to include by default
-#import "@preview/hydra:0.6.2": hydra                          // Package for headers
+// Packages to load
+//#import "@preview/hydra:0.6.2": hydra                          // Package for headers
 #import "@preview/physica:0.9.7": *                            // Package to write physics and math better
 #import "@preview/typsium:0.3.1": *                            // Package for chemical equations
 #import "@preview/unify:0.7.1": num, numrange, qty, qtyrange   // for units
@@ -25,17 +25,8 @@
       }
     },
   )
+  set text(font: "Libertinus Serif", lang: "pt")
 
-  set text(font: "Libertinus Serif", lang: "en")
-  // Set run-in subheadings, starting at level 3.
-  //  show heading: it => {
-  //    if it.level > 2 {
-  //      parbreak()
-  //      text(11pt, style: "italic", weight: "regular", it.body + ".")
-  //    } else {
-  //      it
-  //    }
-  //  }
   // Title row.
   align(left)[
     #block(text(weight: 700, 1.5em, title))
