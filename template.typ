@@ -71,18 +71,19 @@
   set heading(numbering: "1.1.")
   show heading: set block(above: 1.5em, below: 1em)
   show heading.where(level: 1): set block(above: 2em, below: 1em)
-  let h1-seen = state("h1-seen", false)
-  show heading.where(level: 1): it => {
-    if it.outlined {
-      context {
-        if h1-seen.get() {
-          pagebreak(weak: true)
-        }
-      }
-      h1-seen.update(true)
-    }
-    it
-  }
+  // Uncomment if you want level 1 header always on different page
+  // let h1-seen = state("h1-seen", false)
+  // show heading.where(level: 1): it => {
+  //   if it.outlined {
+  //     context {
+  //       if h1-seen.get() {
+  //         pagebreak(weak: true)
+  //       }
+  //     }
+  //     h1-seen.update(true)
+  //   }
+  //   it
+  // }
 
   // Abstract — só é renderizado se for fornecido
   if abstract != none {
