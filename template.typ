@@ -1,65 +1,64 @@
-// The project function defines how your document looks.
-// It takes your content and some metadata and formats it.
-// Go ahead and customize it to your liking!
-
 // Packages to include by default
 #import "@preview/hydra:0.6.2": hydra                          // Package for headers
 #import "@preview/physica:0.9.7": *                            // Package to write physics and math better
 #import "@preview/typsium:0.3.1": *                            // Package for chemical equations
 #import "@preview/unify:0.7.1": num, numrange, qty, qtyrange   // for units
 
-
-#let project(title: "", authors: (), date: none, body) = {
+#let project(
+  title: "",
+  abstract: none,
+  authors: (),
+  date: none,
+  body,
+) = {
   // Set the document's basic properties.
-  set document(author: authors.map(a => a.name), title: title)
-
+  set document(author: authors, title: title)
   set page(
-    margin: (left: 25mm, right: 25mm, top: 30mm, bottom: 30mm),
+    margin: (left: 30mm, right: 30mm, top: 30mm, bottom: 30mm),
     header: context {
-      if counter(page).get().first() > 1 {                      // To prevent header in first page
-        emph(hydra(2))                                          // Name of heading in header (only 2 level heading) on the left
+      if counter(page).get().first() > 1 {
+        // To prevent header in first page
+        emph(title) // Name of heading in header (only 2 level heading) on the left
         h(1fr)
-        counter(page).display("1")                              // Page number on the right
-        line(length: 100%)                                      // Line below header
+        counter(page).display("1") // Page number on the right
+        line(length: 100%) // Line below header
       }
     },
   )
 
   set text(font: "Libertinus Serif", lang: "en")
-
-  set heading(numbering: "1.1.", supplement: "Secção")
-  show heading: set block(above: 2em, below: 1em) // espaçamento antes e depois dos cabeçalhos
-  show heading.where(level: 1): set block(spacing: 2em) // espaçamento extra para cabeçalhos de nível 1
-
+  // Set run-in subheadings, starting at level 3.
+  //  show heading: it => {
+  //    if it.level > 2 {
+  //      parbreak()
+  //      text(11pt, style: "italic", weight: "regular", it.body + ".")
+  //    } else {
+  //      it
+  //    }
+  //  }
   // Title row.
-  align(center)[
-    #block(text(weight: 700, 1.75em, title))
-    #v(2em, weak: true)
+  align(left)[
+    #block(text(weight: 700, 1.5em, title))
+    #v(1em, weak: true)
+    // Author information.
+    #pad(
+      top: 0.5em,
+      grid(
+        columns: (1fr,) * calc.min(3, authors.len()),
+        gutter: 1em,
+        ..authors.map(author => align(left, strong(author))),
+      ),
+    )
     #date
+    #v(1.5em, weak: true)
   ]
-
-  // Author information.
-  pad(
-    top: 0.5em,
-    bottom: 0.5em,
-    x: 2em,
-    grid(
-      columns: (1fr,) * calc.min(3, authors.len()),
-      gutter: 1em,
-      ..authors.map(author => align(center)[
-        *#author.name* \
-        #author.email \
-        #author.affiliation
-      ]),
-    ),
-  )
+  line(length: 100%, stroke: 1pt + gray)
 
   // Main body.
-  set par(justify: true, first-line-indent: (amount: 1.5em, all: true)) // para alterar espaçamento entre linhas, utilizar leading: 0.52em (default)
+  set par(justify: true, first-line-indent: (amount: 1em, all: false)) // para alterar espaçamento entre linhas, utilizar leading: 0.52em (default)
 
   // Numbered equations
   set math.equation(numbering: "(1)", number-align: right, supplement: [Eq.])
-
   // Table caption position
   show figure.where(kind: table): set figure.caption(position: top)
 
@@ -75,35 +74,35 @@
     column-gutter: 0em,
   )
 
+  set enum(indent: 1.5em)
+  set list(indent: 1.5em)
+
+  set heading(numbering: "1.1.")
+  show heading: set block(above: 1.5em, below: 1em)
+  show heading.where(level: 1): set block(above: 2em, below: 1em)
+  let h1-seen = state("h1-seen", false)
+  show heading.where(level: 1): it => {
+    if it.outlined {
+      context {
+        if h1-seen.get() {
+          pagebreak(weak: true)
+        }
+      }
+      h1-seen.update(true)
+    }
+    it
+  }
+
+  // Abstract — só é renderizado se for fornecido
+  if abstract != none {
+    {
+      show heading: set block(above: 0em, below: 0em)
+      show heading.where(level: 1): set block(above: 1em, below: 1em)
+      heading(outlined: false, numbering: none, text(0.85em, smallcaps[Abstract]))
+    }
+    abstract
+    v(1.5em, weak: true)
+    line(length: 100%, stroke: 1pt + gray)
+  }
   body
 }
-
-#let d = datetime.today()
-#let ordinal(n) = {
-  let suffix = if n == 11 or n == 12 or n == 13 {
-    "th"
-  } else if calc.rem(n, 10) == 1 {
-    "st"
-  } else if calc.rem(n, 10) == 2 {
-    "nd"
-  } else if calc.rem(n, 10) == 3 {
-    "rd"
-  } else {
-    "th"
-  }
-  [#n#super(suffix)]
-}
-#let months = (
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-)
