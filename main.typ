@@ -7,25 +7,38 @@
 
 // Preamble
 #show: project.with(
-  title: "Title",
+  title: "Template",
   authors: (
-    "author",
+    (
+      name: "João Sá Pereira",
+      email: "",
+      affiliation: "",
+    ),
   ),
-  // abstract: lorem(59),
-  date: "date",
+  date: [
+    #months.at(d.month() - 1) #ordinal(d.day()), #d.year()
+  ],
+  // or manual date
+  // date: "10 de dezembro de 2025",
 )
 
+// Body
+
 = Introduction
+#lorem(60)
+
+== In this paper
+#lorem(20)
+
+=== Contributions
+#lorem(40)
+
+= Related Work
+#lorem(150)
+
+== Inspirations
 
 #lorem(300)
-
-== Description
-
-#lorem(100)
-
-=== Motivations
-
-#lorem(400)
 
 // Uncomment next line for bibliography
 // #bibliography("references.bib", style: "american-psychological-association", full: true)
